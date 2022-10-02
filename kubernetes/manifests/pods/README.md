@@ -13,3 +13,11 @@ to quicky start a pod without modifying many details (mostly for quick debugging
 ### Leave the pods when exit
 
 `kubectl run -i -t debug --image alpine`
+
+To use the resources in this directory, select the resource you want, modify its value and do
+
+`kubectl apply -f <name-of-the-file.yaml>`
+
+and after the pod has been created, you can access it to continue debugging with
+
+`k exec -it <pod-name> -- <sh/or other command you want`
