@@ -55,4 +55,3 @@ also, if you want a quick hack to do the opposite, for example, get all not runn
 ### Get Node name from pod's name (on AWS)
 
 `kubectl get nodes $(kubectl get pod <pod> -o=jsonpath='{.spec.nodeName}') -o=jsonpath='{.spec.externalID}'`
-
