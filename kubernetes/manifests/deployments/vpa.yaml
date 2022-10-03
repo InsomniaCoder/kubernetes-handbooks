@@ -1,0 +1,22 @@
+apiVersion: autoscaling.k8s.io/v1beta2
+kind: VerticalPodAutoscaler
+metadata:
+  name: test-recommender
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind:       Deployment
+    name:       test
+  updatePolicy:
+    updateMode: "Off" # dry run
+  resourcePolicy:
+    containerPolicies:
+    - containerName: "configmap-reload"
+      mode: "Off" #disable this container from being updated
+    - containerName: "main-container"
+      minAllowed:
+        cpu: "300m"
+        memory: "512Mi"
+      maxAllowed:
+        cpu: "1800m"
+        memory: "3600Mi"
