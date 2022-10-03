@@ -21,3 +21,26 @@ To use the resources in this directory, select the resource you want, modify its
 and after the pod has been created, you can access it to continue debugging with
 
 `k exec -it <pod-name> -- <sh/or other command you want`
+
+### Useful commands
+
+to list the pod by the start time use:
+
+`kubectl get pod --sort-by='.status.startTime'`
+
+to get/delete multiple pods at the same time by label use
+
+`kubectl get pod -l labelA=valueA` or `kubectl delete pod -l labelA=valueA`
+
+`grep` is always your friends
+
+to limit response resources, `grep` is a classic command to help
+
+get all running pod
+
+`kubectl get pod | grep "Running"`
+
+also, if you want a quick hack to do the opposite, for example, get all not running pods, use `egrep` with `-v`
+
+`kubectl get pods | egrep -v "Running"`
+
