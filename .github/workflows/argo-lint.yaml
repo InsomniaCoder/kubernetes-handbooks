@@ -1,0 +1,23 @@
+name: run argo lint
+
+on:
+  push:
+    branches: [ "nojira/argo-lint" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+
+  runBashTests:
+    runs-on: medium
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup ArgoCD CLI
+      uses: imajeetyadav/argocd-cli@v1
+      with:
+        version: v2.5.7 # optional
+
+    - name: Lint Argo's Application manifest
+      run: |
+        argo lint ./deploy
